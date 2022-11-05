@@ -1,7 +1,7 @@
 .idea/
-.DS_Store
 resources/
 css-toggle-switch-master/
-/js/appCopy.js
 /js/modules/
+/js/appCopy.js
 /js/test.js
+.DS_Store
