@@ -1,0 +1,30 @@
+// ===========
+// Base Layout
+// ===========
+
+* {
+  // Without box-sizing, the width property represents
+  // the content area of the element
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $base-font;
+  height: 100vh;
+}
+
+p {
+  line-height: 1em;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+textarea {
+  overflow: auto;
+}

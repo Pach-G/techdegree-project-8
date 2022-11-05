@@ -1,0 +1,28 @@
+.card {
+  display: flex;
+  border: 1px solid $light-gray;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.text-container {
+  margin: auto;
+  padding-left: 20px;
+  align-self: center;
+  font-family: 'Roboto Condensed', sans-serif;
+  & h2 {
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  & p {
+    font-size: 14px;
+    color: #777788;
+    font-weight: lighter;
+  }
+}
