@@ -1,24 +1,40 @@
-//  Animations
-//  -------------
-@keyframes  fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateX(-100px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0px);
+//  Cards
+//  =====
+
+.card {
+  display: flex;
+  padding: 15px;
+  border: 1px solid $light-gray;
+  border-radius: 10px;
+  transition: transform .25s ease;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
   }
 }
 
-//  Grid
-//  ----
+.avatar {
+  border-radius: 50%;
+}
 
-.main-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 350px);
-  grid-auto-rows: 150px;
-  gap: 1.5em;
-  padding: 30px;
-  align-content: center;
+.text-container {
+  padding-left: 10px;
+  font-family: 'Roboto Condensed', sans-serif;
+
+  & h2 {
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  & p {
+    font-size: 13px;
+    color: #777788;
+    font-weight: lighter;
+  }
+}
+
+.email {
+  word-wrap: break-word;
 }

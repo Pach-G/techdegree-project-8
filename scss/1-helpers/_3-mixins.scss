@@ -1,0 +1,13 @@
+//noinspection SassScssResolvedByNameOnly
+@mixin mQ($break) {
+  $value: map-get($breakpoints, $break);
+
+  @if $value == null {
+    @error "`#{$break}` is not a valid breakpoint name.";
+  }
+  @else {
+    @media (min-width: $value) {
+      @content;
+    }
+  }
+}

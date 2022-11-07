@@ -1,12 +1,27 @@
 //  =========
 //  Variables
 //  =========
+
+//  URLs
+//  ----
 const urlApi = `https://randomuser.me/api/?results=12&inc=name,picture,email,location,phone,dob&noinfo&nat=US`;
+
+//  Cards
+//  -----
+const mainContainer = document.querySelector('.main-container');
+const employeeCards = document.getElementById('employee-cards');
 let employees = [];
-const gridContainer = document.querySelector('.main-container');
+
+//  Modal
+//  ----- 
 const overlay = document.querySelector('.overlay');
-const modalContainer = document.querySelector('.modal-content');
+const modalContent = document.querySelector('.modal-content');
 const modalClose = document.querySelector('.modal-close');
+const modalSwitch = document.querySelector('.modal-switch');
+let cardIndex;
+
+//  Searchbar
+//  ---------
 const search = document.getElementById('search');
 
 
@@ -48,7 +63,7 @@ function displayEmployees(employeeData) {
       </div>
       `;
     });
-  gridContainer.insertAdjacentHTML('beforeend', employeeHTML);
+  employeeCards.insertAdjacentHTML('afterbegin', employeeHTML);
 }
 
 //   Creates modal body
@@ -75,18 +90,22 @@ function displayModal(index) {
       <p>Birthday: &#20 ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
     </div>
     `;
+
   overlay.classList.remove("hidden");
-  modalContainer.innerHTML = modalHTML;
-  console.log(street);
+  modalContent.innerHTML = modalHTML;
+  cardIndex = index;
 }
 
 //  ===============
 //  Event Listeners
 //  ===============
 
-// Modal event listener
-gridContainer.addEventListener('click', (e) => {
-  if (e.target !== gridContainer) {
+// Modal event listeners
+// ---------------------
+employeeCards.addEventListener('click', (e) => {
+  if (e.target !== employeeCards) {
+    console.log(e.target);
+    // const card = e.target;
     const card = e.target.closest('.card');
     const index = card.getAttribute('data-index');
 
@@ -97,6 +116,34 @@ gridContainer.addEventListener('click', (e) => {
 modalClose.addEventListener('click',
                             () => overlay.classList.add('hidden'));
 
+modalSwitch.addEventListener('click', (e) => {
+  const button = e.target;
+
+  if (button.textContent.toLowerCase() === 'next') {
+    if (cardIndex >= 11) {
+      cardIndex = 0;
+      displayModal(cardIndex);
+    }
+    else {
+      cardIndex++;
+      displayModal(cardIndex);
+    }
+
+  }
+  else {
+    if (cardIndex === 0) {
+      cardIndex = 11;
+      displayModal(cardIndex);
+    }
+    else {
+      cardIndex--;
+      displayModal(cardIndex);
+    }
+  }
+});
+
+// Search bar event listener
+// -------------------------
 search.addEventListener('keyup', (e) => {
   let currentValue = e.target.value.toLowerCase();
   let employee = document.querySelectorAll('h2.name');
@@ -105,7 +152,7 @@ search.addEventListener('keyup', (e) => {
     let card = employee.parentNode.parentNode;
 
     if (employee.textContent.toLowerCase().includes(currentValue)) {
-      card.style.display = 'block';
+      card.style.display = 'flex';
     }
     else {
       card.style.display = 'none';

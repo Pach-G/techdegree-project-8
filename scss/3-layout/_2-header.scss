@@ -1,0 +1,28 @@
+.header-container {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include mQ('tablet') {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.tittle {
+  font-weight: 500;
+  font-size: 1.3em;
+
+  @include mQ('tablet'){
+  margin: 10px;
+  }
+}
+
+#search {
+  padding: 10px;
+  max-width: 200px;
+  border: 2px solid $light-gray;
+  border-radius: 10px;
+
+  @include mQ('tablet') {
+    margin: auto 10px auto auto;
+  }
+}
