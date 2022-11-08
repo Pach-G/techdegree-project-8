@@ -104,8 +104,6 @@ function displayModal(index) {
 // ---------------------
 employeeCards.addEventListener('click', (e) => {
   if (e.target !== employeeCards) {
-    console.log(e.target);
-    // const card = e.target;
     const card = e.target.closest('.card');
     const index = card.getAttribute('data-index');
 
@@ -113,8 +111,7 @@ employeeCards.addEventListener('click', (e) => {
   }
 });
 
-modalClose.addEventListener('click',
-                            () => overlay.classList.add('hidden'));
+modalClose.addEventListener('click', () => overlay.classList.add('hidden'));
 
 modalSwitch.addEventListener('click', (e) => {
   const button = e.target;
@@ -122,24 +119,20 @@ modalSwitch.addEventListener('click', (e) => {
   if (button.textContent.toLowerCase() === 'next') {
     if (cardIndex >= 11) {
       cardIndex = 0;
-      displayModal(cardIndex);
     }
     else {
       cardIndex++;
-      displayModal(cardIndex);
     }
-
   }
   else {
-    if (cardIndex === 0) {
+    if (cardIndex <= 0) {
       cardIndex = 11;
-      displayModal(cardIndex);
     }
     else {
       cardIndex--;
-      displayModal(cardIndex);
     }
   }
+      displayModal(cardIndex);
 });
 
 // Search bar event listener
